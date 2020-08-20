@@ -2,6 +2,7 @@ package com.jenkins.aufgabe.jenkinsAufgabe;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -15,7 +16,6 @@ import java.util.Map;
  * This class bring the jobs from the API of Jenkins who they have more than
  * one year did not activated and delete them .
  */
-
 public class JobsDetails {
     public JobsDetails() {
 
@@ -23,11 +23,13 @@ public class JobsDetails {
 
     /**
      * this Method open the communication with Jenkins
-     * @param theLinkOfRestApiOfJenkins
+     *
+     * @param 'theLinkOfRestApiOfJenkins'
      * @return the general API
      */
-    public StringBuffer connection(String theLinkOfRestApiOfJenkins)  {
+    public StringBuffer connection(String theLinkOfRestApiOfJenkins) {
         StringBuffer response = null;
+
 
         try {
             URL urlOfRestApiOfJenkins = new URL(theLinkOfRestApiOfJenkins);
@@ -53,8 +55,9 @@ public class JobsDetails {
 
     /**
      * this Method used to get the Job's names from the Jenkins API
+     *
      * @return a Map who contain the Job's names
-     * @throws Exception
+     * @throws 'Exception'
      */
     public Map<Integer, String> connectToJenkinsToGetTheJobs() throws Exception {
 
@@ -76,7 +79,8 @@ public class JobsDetails {
 
     /**
      * this Method used to get the last Build of each Job
-     * @param jobName
+     *
+     * @param 'jobName'
      * @return the specific API of each Last-Build-Job
      */
     public StringBuffer connectToJenkinsToGetLastBuild(String jobName) {
@@ -87,10 +91,11 @@ public class JobsDetails {
 
     /**
      * this Method used to get the last build number of each Job
-     * @param link
+     *
+     * @param 'link'
      * @return Last Build Number Of each Job
      */
-    public StringBuffer connectToJenkinsToGetLastBuildNumberOfTheJob(String link)  {
+    public StringBuffer connectToJenkinsToGetLastBuildNumberOfTheJob(String link) {
 
         connection(link);
 
@@ -100,6 +105,7 @@ public class JobsDetails {
 
     /**
      * this Method used to get the timestamp of each last build of each Job
+     *
      * @return the timestamp for each last build of each Job
      * @throws Exception
      */
@@ -124,7 +130,8 @@ public class JobsDetails {
 
     /**
      * this Method used to convert the Timestamp to a date
-     * @param timestamp
+     *
+     * @param 'timestamp'
      * @return a date
      */
     private Date convertTimestampToDate(Long timestamp) {
@@ -136,6 +143,7 @@ public class JobsDetails {
 
     /**
      * this Method used to delete the Jobs who they have since more than one year did not build
+     *
      * @throws Exception
      */
     public void deleteJobs() throws Exception {
